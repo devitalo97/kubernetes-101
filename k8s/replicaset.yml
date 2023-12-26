@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: http-server-replicaset
+  labels:
+    app: http-server-replicaset
+spec:
+  selector:
+    matchLabels:
+      app: http-server
+  replicas: 10
+  template:
+    metadata:
+      labels: 
+        app: http-server
+    spec:
+      containers:
+        - name: http-server
+          image: "bwssoft/kubernetes-hello-world:v2"
