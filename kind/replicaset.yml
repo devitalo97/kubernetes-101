@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica-name
+  labels:
+    app: replica-app
+spec:
+  selector:
+    matchLabels: 
+      app: app
+  replicas: 2
+  template: 
+    metadata:
+      name: app
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: "bwssoft/kubernetes-hello-world:v3"

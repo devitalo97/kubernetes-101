@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "pod-name"
+  labels:
+    app: "pod-app"
+spec:
+  containers:
+    - name: "pod-container"
+      image: "bwssoft/kubernetes-hello-world:v3"

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-name
+  labels:
+    app: deployment-app
+spec:
+  selector:
+    matchLabels: 
+      app: app
+  replicas: 2
+  template: 
+    metadata:
+      name: app
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: "bwssoft/kubernetes-hello-world:v3"

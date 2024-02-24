@@ -45,3 +45,17 @@ ClusterIP cria um ip interno do "servidor kubernetes". O que tiver acesso a esse
 o arquivo k8s/node-port-service.yml é a configuração de um objeto do tipo Service e o funcionamento dele é o seguinte: a porta configurada no serviço será replicada em todos os nós do cluster e o que tiver acesso ao ip das maquinas de onde esses nós estão rodando irá conseguir acessá-los. É arcaico e usado mais para demonstração, poc. a porta criada deve ser entre o range de >30000 e <32767
 
 o arquivo k8s/load-balancer-service.yml é a configuração de um objeto do tipo Service e o funcionamento dele é o seguinte: ele cria um ip externo para que o service seja acessado e a partir dai o service direcionar a requisição para algum dos pods. caso esse service seja aplicado em um cluster que está rodando em uma nuvem, o ip externo será gerado, mas quando aplicado em uma maquina local, o ip externo nao será gerado.
+
+probes
+
+ciclo da aplicação != da nossa aplicação
+determinadas situações que queremos garantir que nossa aplicação esteja funcionado.
+
+momentos da aplicação:
+
+1. a aplicação está funcionando no ar
+   > precisamos de um mecanismo para checar se a aplicação está no ar
+2. inicialização da aplicação
+   > loading da conexão com o banco, precisamos de um mecanismo para nao enviar tráfego para o pod
+3. a aplicação no ar e ela quebra
+   > desviar o tráfego e reiniciar o container
